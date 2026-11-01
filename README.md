@@ -94,7 +94,6 @@ On the Review page, click Create stack.
 
 12.Make a note of the Output values from the CloudFormation environment that you launched as you will need them for the remainder of the tutorial:
 
-### 3. Install and configure Kiro / Q CLI
 
 
 ![Workshop screenshot — image-53](images/image-53.png)
