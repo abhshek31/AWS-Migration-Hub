@@ -800,43 +800,6 @@ For SQL Server Source expand here
 Note this will take a long time to complete you can move onto the next step. If errors occur they can be ignored or resolved later.
 Ensure Kiro starts and runs the script but you don't have to wait for it to be completely done before going to the next step
 Go back to your Kiro/Q prompt and run the following command.
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
 Run the following SQL script against the SQL Server source database and return the results:
 ```sql
 USE [dms_sample]
@@ -891,17 +854,6 @@ Congratulations you completed this section and your database migration!!!
 ## Images
 
 The original Word document contained **53 embedded images**. All extracted images are included in `images/` and linked in the procedure above.
-
-## Repository layout
-
-```text
-aws-sqlserver-to-aurora-mysql-runbook/
-├── README.md
-└── images/
-    ├── image-01.*
-    ├── ...
-    └── image-53.*
-```
 
 ## Safety and cleanup
 
