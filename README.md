@@ -60,9 +60,8 @@ Name the key pair DMSKeyPair, and then click Create. At this point, your browser
 
 In this step, you will use a CloudFormation (CFN) template to deploy the infrastructure for this database migration. AWS CloudFormation  simplifies provisioning the infrastructure, so we can concentrate on tasks related to data migration.
 Open the AWS CloudFormation console , and click on Create Stack in the left-hand corner.
-```sql
 Select Template is ready, and choose Upload a template file as the source template. Then, click on Choose file and upload the DMSWorkshop.yaml . Click Next.
-```
+
 Populate the form as with the values specified below, and then click Next.
 
 ![Workshop screenshot — image-45](images/image-45.png)
