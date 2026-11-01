@@ -172,13 +172,15 @@ Kiro install and config is complete, now let's move to the next section to start
 When migrating your Microsoft SQL Server database using AWS DMS, you can choose to migrate existing data only, migrate existing data and replicate ongoing changes, or migrate existing data and use change data capture (CDC) to replicate ongoing changes. Migrating only the existing data does not require any configuration on the source SQL Server database. However, to migrate existing data and replicate ongoing changes, you need to either enable MS-REPLICATION, or MS-CDC. In the next part of our workshop we are going to do just that
 Get back to the Session Manager window where we were connected to the EC2LinuxMultiDB instance where you completed setting up Kiro/Q CLI a few moments ago. The last command should have been changing the model. Note if the session ended or you were disconnected/froze you will need to reset the model again if it restarts.
 Using the Kiro/Q prompt like below have Kiro/Q research the databases in your account and region Note be sure the region matches with the command below: This should find 2 databases and a S3 bucket. If you get prompted for "Allow this action" or anything with a trust or confirm please do so.
-1
+```sql
 Find the AWS region this EC2 instance is running in using IMDSv2 (the newer metadata service version).
+```
 Any Prompts that Kiro/Q asks for t for trust or y for yes proceed please select Trust and if it asks something like Shell requires approval if you say Entire tool it will save you from having to approve each command run. here's an example Allow this action? Use 't' to trust (always allow) this tool for the session. [y/n/t]: pick t and enter. You will also have to confirm full commands or Trust Entire tool by hitting enter when asked for Kiro to proceed on and action/command please do so
 Kiro/Q should come back with the region of your event where the ec2 instance is running. Next use the following prompt with Kiro/Q
-1
+```sql
 Using the AWS region you found, tell me about the RDS databases in this account. They may start with "cfn" in the name. There is also a Windows EC2 instance (name may start with "cfn") running SQL Server that I want to include as a possible source. Its connection details are in Secrets Manager, along with the RDS connection info. Also, find the S3 buckets in this region with a bucket name starting with "dms-sc".
 It should look something like below just (note your region may vary from screenshot)
+```
 
 ![Workshop screenshot — image-14](images/image-14.png)
 
@@ -265,6 +267,7 @@ ALTER DATABASE [YoDA] SET RECOVERY FULL WITH NO_WAIT
 GO
 ```
 Kiro/Q will save the script to a file then build the steps necessary to execute it at the end it should say something like
+```sql
 > Perfect! The SQL script executed successfully. Here's what was configured:
 Completed Setup:
 ✓ Added dbadmin to sysadmin role
@@ -287,7 +290,7 @@ Note: There's a warning about the database master key in the distribution databa
 security if needed.
 Your SQL Server source is now ready for DMS schema conversion and database migration with CDC enabled for ongoing replication.
 Now let move on to the next section of picking your target. note you'll still use Kiro so keep that tab/connection open.
-
+```
 Note: if Kiro had permission issue creating the migration project due to lack of iam-PassRole you will need to just use the prebuilt one. Kiro can't fix that level of IAM issue. Please let your AWS contact know you hit this issue and provide the error message
 
 Kiro Setup and Config Target
@@ -295,31 +298,9 @@ This section demonstrates how we will use Kiro/Q to build our DMS resources and 
 Return the the Sessions Manager window in the AWS Console, where we used to configure our source databases.
 Now let's have Kiro/Q build our SC & DMS migration resources using the prompts below. Note: it will cycle through existing resources which may take a bit.
 First we need to prepare our MySQL target with the script below. Have Kiro connect and run it for you.
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
+```sql
 Connect to the Aurora MySQL database in this region using credentials from Secrets Manager. Run the following SQL script to prepare the MySQL target for DMS migration:
+```
 ```sql
 GRANT CREATE ON *.* TO 'dbadmin';
 GRANT ALTER ON *.* TO 'dbadmin';
